@@ -2,10 +2,11 @@
 
 rm -rf run-verilator.log
 
-set TOP_DIR = ${HOME}/prj/coding-exercise2s
-set ACT_DIR = ${TOP_DIR}/libs/ac_types/include
-set CPP_DIR = ${TOP_DIR}/c++-model
-set RTL_DIR = ${TOP_DIR}/rtl-model
+set TOP_DIR=/mnt/c/Users/jakub/Desktop/interview-task/
+# set TOP_DIR=${HOME}/prj/coding-exercise2s
+set ACT_DIR=${TOP_DIR}/libs/ac_types/include
+set CPP_DIR=${TOP_DIR}/c++-model
+set RTL_DIR=${TOP_DIR}/rtl-model
 
 echo "--------------------------------------------------------------------------------"
 echo "Compiling with 'verilator' ..."

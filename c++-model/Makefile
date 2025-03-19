@@ -1,6 +1,6 @@
 # Makefile
 
-SHELL        := /bin/tcsh
+SHELL        := /bin/bash
 ROOT_DIR     := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
 TOP_DIR     = ${ROOT_DIR}/..
@@ -35,7 +35,7 @@ CXXFLAGS += -O3
 endif
 
 # Disable all cout by default:
-DBG_ALL = 0
+DBG_ALL = 1
 DBG_OUT = 0
 DBG_TST = 0
 

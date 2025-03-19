@@ -86,9 +86,15 @@ bool testFunction (void)
 
 int main (int argc, char *argv[])
 {
+    using namespace std;
+
     bool ok_sts = true;
 
     ok_sts &= testFunction();
+    
+    if(ok_sts){
+        cout << "All tests passed.\n";
+    }
 
     int ret_sts = (ok_sts) ? 0 : -1;
 

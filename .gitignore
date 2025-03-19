@@ -1,0 +1,6 @@
+*.docx
+.vscode
+verilator/verilator
+*.o
+verilator/dump.vcd
+verilator/obj_dir/
