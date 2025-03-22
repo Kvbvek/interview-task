@@ -8,7 +8,7 @@ module quadra
 (
     input  ck_t clk,
     input  rs_t rst_b,
-    input  x1_t  x1,
+    input  x1_t x1,
     input  x2_t x2,
     output y_t  y
 );
@@ -41,7 +41,7 @@ module quadra
         .c(c_nxt)
     );
 
-    // Stage 1 ff
+    // Pipeline stage 1 ff
     always_ff@(posedge clk) begin
         if (!rst_b) begin
             sq <= '0;
@@ -59,13 +59,13 @@ module quadra
         end
     end
 
-    always_comb begin // t = s4.27
-        t0_nxt = a >>> 1;
-        t1_nxt = (b * x2_internal) >>> 24; 
-        t2_nxt = (c * sq) >>> 30; 
+    always_comb begin
+        t0_nxt = a[31:1];                 // truncate lsb of coeff
+        t1_nxt = (b * x2_internal) >>> 6; // shift right 6 bits for proper interpretation -> * 2^(-6)
+        t2_nxt = (c * sq);  
     end
 
-    // Stage 2 ff
+    // Pipeline stage 2 ff
     always_ff@(posedge clk) begin
         if (!rst_b) begin
             t0 <= '0;
@@ -80,10 +80,10 @@ module quadra
     end
 
     always_comb begin
-        s_nxt = t0 + t1 + t2;
+        s_nxt = t0 + t1[48:18] + t2[55:25];
     end
 
-    //Stage 3 ff
+    // Pipeline stage 3 ff
     always_ff@(posedge clk) begin
         if (!rst_b) begin
             y <= '0;

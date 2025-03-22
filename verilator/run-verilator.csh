@@ -49,11 +49,11 @@ verilator \
     +incdir+${RTL_DIR} \
     +incdir+${CPP_DIR} \
     \
-    +1800-2009ext+sv \
-    ${RTL_DIR}/quadra_top.sv \
-    ${RTL_DIR}/square.sv \
-    ${RTL_DIR}/lut.sv \
-    ${RTL_DIR}/quadra.sv
+    +1800-2009ext+vs \
+    ${RTL_DIR}/quadra_top.vs \
+    ${RTL_DIR}/square.vs \
+    ${RTL_DIR}/lut.vs \
+    ${RTL_DIR}/quadra.vs
 
 echo "--------------------------------------------------------------------------------"
 echo "... done with 'verilator'."

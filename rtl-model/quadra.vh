@@ -64,10 +64,17 @@ localparam int  C_W = C_I + C_F;
 
 typedef logic signed [C_W-1:0] c_t;
 
+// sq full
+localparam int  SQFULL_I = X2_I + X2_I;
+localparam int  SQFULL_F = X2_F + X2_F;
+localparam int  SQFULL_W = 34; //SQ_I + SQ_F;
+
+typedef logic [SQFULL_W-1:0] sqfull_t;
+
 // sq
 localparam int  SQ_I = X2_I + X2_I;
 localparam int  SQ_F = X2_F + X2_F;
-localparam int  SQ_W = 34; //SQ_I + SQ_F;
+localparam int  SQ_W = 24; //SQ_I + SQ_F;
 
 typedef logic [SQ_W-1:0] sq_t;
 
@@ -81,21 +88,28 @@ typedef logic signed [T1_W-1:0] t0_t;
 // t1
 localparam int  T1_I = B_I + X2_I;
 localparam int  T1_F = B_F + X2_F;
-localparam int  T1_W = 31;//T1_I + T1_F;
+localparam int  T1_W = 49;//T1_I + T1_F;
 
 typedef logic signed [T1_W-1:0] t1_t;
 
 // t2
 localparam int  T2_I = SQ_I + C_I;
 localparam int  T2_F = SQ_F + C_F;
-localparam int  T2_W = 31;//T2_I + T2_F;
+localparam int  T2_W = 56;//T2_I + T2_F;
 
 typedef logic signed [T2_W-1:0] t2_t;
+
+// // t trunc
+// localparam int  T2_I = SQ_I + C_I;
+// localparam int  T2_F = SQ_F + C_F;
+// localparam int  T2_W = 31;//T2_I + T2_F;
+
+// typedef logic signed [T2_W-1:0] t2_t;
 
 // s
 localparam int  S_I = Y_I;
 localparam int  S_F = Y_F;
-localparam int  S_W = 35;//S_I + S_F;
+localparam int  S_W = 31;//S_I + S_F;
 
 typedef logic signed [S_W-1:0] s_t;
 
