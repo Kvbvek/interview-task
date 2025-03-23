@@ -11,7 +11,7 @@ module quadra_top
 );
     // Pipeline data valid (3 stages):
     dv_t dv_p0, dv_p1, dv_p2;
-    // y_t y_internal;
+    y_t y_internal;
 
     always_ff @(posedge clk)
     if (!rst_b) begin
@@ -29,13 +29,12 @@ module quadra_top
     quadra u_quadra(
         .clk(clk),
         .rst_b(rst_b),
-        .x1(x[23:17]),
-        .x2(x[16:0]),
-        .y(y)
+        .x(x),
+        .y(y_internal)
     );
 
     // Outputs:
     always_comb y_dv = dv_p2;
-    // always_comb y    = y_internal;
+    always_comb y    = y_internal;
 
 endmodule

@@ -8,14 +8,16 @@ module quadra
 (
     input  ck_t clk,
     input  rs_t rst_b,
-    input  x1_t x1,
-    input  x2_t x2,
+    input  x_t x,
     output y_t  y
 );
 
-    // x1_t x1;
+    x1_t x1;
+    x2_t x2;
     x2_t x2_internal;
+
     sq_t sq, sq_nxt;
+
     a_t a, a_nxt;
     b_t b, b_nxt;
     c_t c, c_nxt;
@@ -25,9 +27,9 @@ module quadra
     t0_t t0, t0_nxt;
 
     s_t s_nxt;
-
-    // assign x2 = x[16:0];
-    // assign x1 = x[23:17];
+    
+    assign x2 = x[16:0];
+    assign x1 = x[23:17];
 
     square u_square(
         .x2(x2),
@@ -60,9 +62,9 @@ module quadra
     end
 
     always_comb begin
-        t0_nxt = a[31:1];                 // truncate lsb of coeff
+        t0_nxt = a;
         t1_nxt = (b * x2_internal) >>> 6; // shift right 6 bits for proper interpretation -> * 2^(-6)
-        t2_nxt = (c * sq);  
+        t2_nxt = c * sq;  
     end
 
     // Pipeline stage 2 ff
@@ -80,7 +82,7 @@ module quadra
     end
 
     always_comb begin
-        s_nxt = t0 + t1[48:18] + t2[55:25];
+        s_nxt = signed'(t0[31:1]) + signed'(t1[48:18]) + signed'(t2[55:25]);   // truncate lsb bits for proper alignment in addition
     end
 
     // Pipeline stage 3 ff
@@ -89,7 +91,7 @@ module quadra
             y <= '0;
         end
         else begin
-            y <= s_nxt >>> 6;
+            y <= signed'(s_nxt[30:6]); // truncate lsb bits, cast to signed because of [] notation
         end
     end
 

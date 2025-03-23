@@ -179,11 +179,9 @@ inline void checkOutput
     cout << dec << scientific << setw(SP_WIDTH) << setprecision(SP_PREC) << right << "RTL y: " << y_rtl_dbl << "\n";
     cout << dec << scientific << setw(SP_WIDTH) << setprecision(SP_PREC) << right << "C++ y: " << y_cpp_dbl << "\n";
     cout << dec << scientific << setw(SP_WIDTH) << setprecision(SP_PREC) << right << "REF y: " << y_ref_dbl << "\n";
-    cout << "\n";
-
+    cout << endl ;
     // cout << dec << scientific << setw(SP_WIDTH) << setprecision(SP_PREC) << right << "C++ error: " << y_cpp_err << "\n";
     // cout << dec << scientific << setw(SP_WIDTH) << setprecision(SP_PREC) << right << "RTL error: " << y_rtl_err << "\n";
-    cout << "\n";
     // if (echo_en)
     // {
     //     cout << dec << scientific << setw(SP_WIDTH) << setprecision(SP_PREC) << right << x_dbl     << "   "
