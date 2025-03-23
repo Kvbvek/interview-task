@@ -63,8 +63,8 @@ module quadra
 
     always_comb begin
         t0_nxt = a;
-        t1_nxt = (b * x2_internal) >>> 6; // shift right 6 bits for proper interpretation -> * 2^(-6)
-        t2_nxt = c * sq;  
+        t1_nxt = (b * x2_internal) >>> X2_SHIFT; // shift right 6 bits for proper interpretation -> * 2^(-6)
+        t2_nxt = (c * sq) >>> X2_SHIFT*2;        // shift right 12 bits for proper alignment -> * 2^(-12)
     end
 
     // Pipeline stage 2 ff

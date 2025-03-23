@@ -9,7 +9,7 @@ module square
 
     // Compute x2^2:
     always_comb begin
-        sq_f = (x2 * x2) >> X2_SHIFT; // shift right 12 bits for proper alignment -> * 2^(-12)
-        sq = sq_f[33:10];             // truncate to 24 bits from full 34 bit result
+        sq_f = (x2 * x2); 
+        sq = sq_f[33:10]; // truncate to 24 bits from full 34 bit result
     end
 endmodule    
