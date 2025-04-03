@@ -83,29 +83,30 @@ typedef logic [SQ_W-1:0] sq_t;
 
 // t0
 localparam int  T0_I = A_I;
-localparam int  T0_F = A_F;
+localparam int  T0_F = S_F;
 localparam int  T0_W = T0_I + T0_F;
 
-typedef logic signed [T1_W-1:0] t0_t; // s4.28
+typedef logic signed [T1_W-1:0] t0_t; // s4.27
 
 // t1
 localparam int  T1_I = B_I + X2_I;
-localparam int  T1_F = B_F + X2_F;
+localparam int  T1_F = S_F;
 localparam int  T1_W = T1_I + T1_F;
 
-typedef logic signed [T1_W-1:0] t1_t; // s4.45
+typedef logic signed [T1_W-1:0] t1_t; // s4.27
 
 // t2
 localparam int  T2_I = SQ_I + C_I;
-localparam int  T2_F = SQ_F + C_F;
+localparam int  T2_F = S_F;
 localparam int  T2_W = T2_I + T2_F;
 
-typedef logic signed [T2_W-1:0] t2_t; // s4.52
+typedef logic signed [T2_W-1:0] t2_t; // s4.27
 
 // s
+localparam int  R_F = 4 // 4 extra fractional bits
 localparam int  S_I = Y_I;
-localparam int  S_F = Y_F;
-localparam int  S_W = S_I + S_F + 6;
+localparam int  S_F = Y_F + R_F;
+localparam int  S_W = S_I + S_F;
 
 typedef logic signed [S_W-1:0] s_t;
 
