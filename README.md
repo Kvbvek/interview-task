@@ -6,6 +6,9 @@ The main objective of this task is to implement a hardware-friendly approximatio
 The design must be suitable for FPGA or ASIC implementation, and should meet a strict accuracy requirement:  
 Δ < 5.25e-6 compared to IEEE double-precision reference.
 
+Most of the modeling code (MATLAB, C++) and simulation infrastructure (Verilator testbench, etc.) has been provided by Intel.  
+The main task is focused on implementing the RTL design in SystemVerilog and optimizing it for accuracy and hardware resource usage.
+
 Key steps include:
 - Modeling and coefficient generation in MATLAB/Octave
 - C++ fixed-point model for functional validation
