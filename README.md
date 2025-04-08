@@ -1,5 +1,16 @@
-# interview-task
-Interview task
+## Project Goal
 
-Main goal of task was to implement SystemVerilog RTL model to approximate trigonomic function. 
-I assumed 3 stage pipeline model based on code provided in quadra_top.sv and quadra_tb.sv. The main obstacle for me was to convert number correctly from the internal value of sum, which had 4 integer bits to output y with 2 integer bits.
+The main objective of this task is to implement a hardware-friendly approximation of a trigonometric function using SystemVerilog, based on a quadratic interpolation model. The function to approximate is:
+`f(x) = sin(2x - π/4),  for x in [0, 2)`
+
+The design must be suitable for FPGA or ASIC implementation, and should meet a strict accuracy requirement:  
+Δ < 5.25e-6 compared to IEEE double-precision reference.
+
+Key steps include:
+- Modeling and coefficient generation in MATLAB/Octave
+- C++ fixed-point model for functional validation
+- RTL implementation in SystemVerilog
+- Simulation and verification using Verilator + GTKWave
+- Final optimization of coefficient sizes and hardware area (in progress)
+
+**Status**: RTL implementation in progress.
