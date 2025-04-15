@@ -175,24 +175,26 @@ inline void checkOutput
     const int SP_WIDTH = SP_PREC + 8;
     
     // cout << hex << y_rtl_fxd << endl;
-    // cout << hex << y_cpp_fxd << endl;
+    cout << hex << y_rtl_fxd << endl;
+    cout << hex << y_cpp_fxd << endl;
+    // printf("y_cpp bin: %b", y_cpp_fxd);
     cout << dec << scientific << setw(SP_WIDTH) << setprecision(SP_PREC) << right << "RTL y: " << y_rtl_dbl << "\n";
     cout << dec << scientific << setw(SP_WIDTH) << setprecision(SP_PREC) << right << "C++ y: " << y_cpp_dbl << "\n";
     cout << dec << scientific << setw(SP_WIDTH) << setprecision(SP_PREC) << right << "REF y: " << y_ref_dbl << "\n";
     cout << endl ;
     // cout << dec << scientific << setw(SP_WIDTH) << setprecision(SP_PREC) << right << "C++ error: " << y_cpp_err << "\n";
     // cout << dec << scientific << setw(SP_WIDTH) << setprecision(SP_PREC) << right << "RTL error: " << y_rtl_err << "\n";
-    // if (echo_en)
-    // {
-    //     cout << dec << scientific << setw(SP_WIDTH) << setprecision(SP_PREC) << right << x_dbl     << "   "
-    //          << dec << scientific << setw(SP_WIDTH) << setprecision(SP_PREC) << right << y_ref_dbl << "   "
-    //          << dec << scientific << setw(SP_WIDTH) << setprecision(SP_PREC) << right << y_cpp_dbl << "  ["
-    //          << dec << scientific << setw(SP_WIDTH) << setprecision(SP_PREC) << right << y_cpp_err << "]  "
-    //          << ((match_ok) ? " ==" : " !=")
-    //          << dec << scientific << setw(SP_WIDTH) << setprecision(SP_PREC) << right << y_rtl_dbl << "  ["
-    //          << dec << scientific << setw(SP_WIDTH) << setprecision(SP_PREC) << right << y_rtl_err << "]  "
-    //          << endl;
-    // }
+//     if (echo_en)
+//     {
+//         cout << dec << scientific << setw(SP_WIDTH) << setprecision(SP_PREC) << right << x_dbl     << "   "
+//              << dec << scientific << setw(SP_WIDTH) << setprecision(SP_PREC) << right << y_ref_dbl << "   "
+//              << dec << scientific << setw(SP_WIDTH) << setprecision(SP_PREC) << right << y_cpp_dbl << "  ["
+//              << dec << scientific << setw(SP_WIDTH) << setprecision(SP_PREC) << right << y_cpp_err << "]  "
+//              << ((match_ok) ? " ==" : " !=")
+//              << dec << scientific << setw(SP_WIDTH) << setprecision(SP_PREC) << right << y_rtl_dbl << "  ["
+//              << dec << scientific << setw(SP_WIDTH) << setprecision(SP_PREC) << right << y_rtl_err << "]  "
+//              << endl;
+//     }
 }
 
 void testQuadra

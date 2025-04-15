@@ -23,11 +23,14 @@ module quadra
     c_t c, c_nxt;
 
     t1_t t1, t1_nxt;
+    t1_full_t t1_full;
     t2_t t2, t2_nxt;
+    t2_full_t t2_full;
     t0_t t0, t0_nxt;
 
     s_t s_nxt;
-    
+    // logic signed [30:0] ss;
+
     assign x2 = x[16:0];
     assign x1 = x[23:17];
 
@@ -62,9 +65,11 @@ module quadra
     end
 
     always_comb begin
-        t0_nxt = a;
-        t1_nxt = (b * x2_internal) >>> X2_SHIFT; // shift right 6 bits for proper interpretation -> * 2^(-6)
-        t2_nxt = (c * sq) >>> X2_SHIFT*2;        // shift right 12 bits for proper alignment -> * 2^(-12)
+        t0_nxt = signed'(a >> 1);
+        t1_full = b * signed'(x2_internal >> X2_SHIFT); // shift right 6 bits for proper interpretation -> * 2^(-6)
+        t1_nxt = signed'(t1_full[48:18]);
+        t2_full = c * signed'(sq >> X2_SHIFT*2);        // shift right 12 bits for proper alignment -> * 2^(-12)
+        t2_nxt = signed'(t2_full[55:25]);
     end
 
     // Pipeline stage 2 ff
@@ -82,7 +87,8 @@ module quadra
     end
 
     always_comb begin
-        s_nxt = signed'(t0[31:1]) + signed'(t1[48:18]) + signed'(t2[55:25]);   // truncate lsb bits for proper alignment in addition
+        // ss = t0 + t1 + t2;
+        s_nxt = t0 + t1 + t2;
     end
 
     // Pipeline stage 3 ff
@@ -91,7 +97,7 @@ module quadra
             y <= '0;
         end
         else begin
-            y <= signed'(s_nxt[30:6]); // truncate lsb bits, cast to signed because of [] notation
+            y <= signed'(s_nxt[28:4]);
         end
     end
 

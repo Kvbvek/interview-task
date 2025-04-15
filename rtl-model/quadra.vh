@@ -77,7 +77,7 @@ typedef logic [SQFULL_W-1:0] sqfull_t;
 localparam int  SQ_TRUNC = 10;
 localparam int  SQ_I = X2_I + X2_I;
 localparam int  SQ_F = X2_F + X2_F;
-localparam int  SQ_W = SQFULL_W - SQ_TRUNC;
+localparam int  SQ_W = SQ_F - SQ_TRUNC;
 
 typedef logic [SQ_W-1:0] sq_t;
 
@@ -95,6 +95,12 @@ localparam int  T1_W = T1_I + T1_F;
 
 typedef logic signed [T1_W-1:0] t1_t; // s4.27
 
+localparam int  T1_FULL_I = B_I + X2_I;
+localparam int  T1_FULL_F = B_F + X2_F;
+localparam int  T1_FULL_W = T1_FULL_I + T1_FULL_F;
+
+typedef logic signed [T1_FULL_W-1:0] t1_full_t; // s4.45
+
 // t2
 localparam int  T2_I = SQ_I + C_I;
 localparam int  T2_F = S_F;
@@ -102,12 +108,18 @@ localparam int  T2_W = T2_I + T2_F;
 
 typedef logic signed [T2_W-1:0] t2_t; // s4.27
 
+localparam int  T2_FULL_I = C_I + SQ_I;
+localparam int  T2_FULL_F = C_F + SQ_W;
+localparam int  T2_FULL_W = T2_FULL_I + T2_FULL_F;
+
+typedef logic signed [T2_FULL_W-1:0] t2_full_t; // s4.52
+
 // s
-localparam int  R_F = 4 // 4 extra fractional bits
+localparam int  R_F = 4; // 4 extra fractional bits
 localparam int  S_I = Y_I;
 localparam int  S_F = Y_F + R_F;
 localparam int  S_W = S_I + S_F;
 
-typedef logic signed [S_W-1:0] s_t;
+typedef logic signed [S_W-1:0] s_t; // s2.27
 
 `endif
