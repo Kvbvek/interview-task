@@ -21,7 +21,7 @@ typedef logic [X_W-1:0] x_t;
 // y [-2,2) -> s2.23
 localparam int  Y_I =  2;          //         =  2
 localparam int  Y_F = 23;          //         = 23
-localparam int  Y_W = X_I + X_F;   //  2 + 23 = 25 (s2.23)
+localparam int  Y_W = Y_I + Y_F;   //  2 + 23 = 25 (s2.23)
 
 typedef logic signed [Y_W-1:0] y_t;
 
@@ -121,5 +121,12 @@ localparam int  S_F = Y_F + R_F;
 localparam int  S_W = S_I + S_F;
 
 typedef logic signed [S_W-1:0] s_t; // s2.27
+
+// s_full
+localparam int  S_FULL_I = S_I + 2;
+localparam int  S_FULL_F = S_F;
+localparam int  S_FULL_W = S_FULL_I + S_FULL_F;
+
+typedef logic signed [S_FULL_W-1:0] s_full_t; // s4.27
 
 `endif
